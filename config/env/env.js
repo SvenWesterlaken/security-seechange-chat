@@ -1,11 +1,11 @@
 const dotenv = require('dotenv');
 const env = {
     port: process.env.PORT || 8081,
-    dbHost: process.env.DB_HOST || 'localhost',
-    dbPort: process.env.DB_PORT || '',
-    dbUser: process.env.DB_USER || '',
-    dbPassword: process.env.DB_PASSWORD || '',
-    dbDatabase: process.env.DB_DATABASE || 'SeeChange',
+    dbHost: process.env.DB_HOST || 'ds161520.mlab.com',
+    dbPort: process.env.DB_PORT || '61520',
+    dbUser: process.env.DB_USER || 'thijsvanmarle',
+    dbPassword: process.env.DB_PASSWORD || 'Welkom123',
+    dbDatabase: process.env.DB_DATABASE || 'seechat',
 };
 
 result = dotenv.config();
