@@ -14,7 +14,7 @@ const username = "thijsvanmarle",
       password = "P@ssword1",
       id = "test";
 
-describe("Chat Integration Test", function() {
+xdescribe("Chat Integration Test", function() {
 
 
     let server,
@@ -80,6 +80,7 @@ describe("Chat Integration Test", function() {
             }
 
             let token = body["token"];
+            console.log(token.toString());
             client.emit("authenticate", username, cipher, token)
         })
     });

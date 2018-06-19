@@ -13,7 +13,7 @@ module.exports = (client) => {
     client.on('authenticate', (username, hash, token) => {
         // get public key from TruYou server
         const options = {
-            url: env.truYou_api+'/api/v1/login/users/'+username,
+            url: env.truYou_api+'/api/v1/users/'+username,
             headers: {
                 'token': token
             }
@@ -27,6 +27,8 @@ module.exports = (client) => {
                 client.disconnect();
                 return;
             }
+
+            // Retreive public key from body
             const o = JSON.parse(body);
             pubkey = o.publicKey.toString();
 

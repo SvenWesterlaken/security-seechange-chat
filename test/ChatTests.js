@@ -33,7 +33,7 @@ describe("Chat test", function() {
                 "host": "localhost"
             }
         })
-            .get('/api/v1/login/users/'+username)
+            .get('/api/v1/users/'+username)
             .reply(200, {"publicKey": pubkey.toString()});
 
         done();
