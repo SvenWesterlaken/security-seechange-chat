@@ -15,7 +15,7 @@ const link = process.env.NODE_ENV === 'production' ?
     'mongodb://localhost/' + env.dbDatabase;
 
 
-env.truYou_api = process.env.TRUYOU_API || 'http://localhost';
+env.truYou_api = process.env.TRUYOU_API || 'localhost';
 env.truYou_api_port = process.env.TRUYOU_API_PORT || 3000;
 
 module.exports = {

@@ -27,10 +27,10 @@ describe("Chat test", function() {
         // start the server
         server = require('../index').server;
 
-        const scope = nock(env.truYou_api, {
+        const scope = nock("http://"+env.truYou_api+":"+env.truYou_api_port, {
             reqheaders: {
                 "token": id,
-                "host": "localhost"
+                "host": env.truYou_api+":"+env.truYou_api_port
             }
         })
             .get('/api/v1/users/'+username)

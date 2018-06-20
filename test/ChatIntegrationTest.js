@@ -65,7 +65,7 @@ xdescribe("Chat Integration Test", function() {
         //generate options object for request
         const requestOptions = {
             method: 'POST',
-            url: env.truYou_api+":"+env.truYou_api_port+"/api/v1/login",
+            url: "http://"+ env.truYou_api+":"+env.truYou_api_port+"/api/v1/login",
             json: {
                 "username": username,
                 "password": password
@@ -126,7 +126,26 @@ xdescribe("Chat Integration Test", function() {
             const authHash = crypto.createHash('sha256').update(username).digest('hex');
             let authBuffer = new Buffer(authHash);
             let cipher = crypto.privateEncrypt(privkeyBob, authBuffer).toString("base64");
-            client.emit("authenticate", username, cipher, id);
+            const requestOptions = {
+                method: 'POST',
+                url: "http://"+ env.truYou_api+":"+env.truYou_api_port+"/api/v1/login",
+                json: {
+                    "username": username,
+                    "password": password
+                }
+            };
+
+            // Get token via a request
+            request(requestOptions, (err, response, body) => {
+                if(err) {
+                    console.log(err);
+
+                }
+
+                let token = body["token"];
+                console.log(token.toString());
+                client.emit("authenticate", username, cipher, token)
+            })
         });
 
 
