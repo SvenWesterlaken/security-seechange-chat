@@ -54,7 +54,7 @@ module.exports = (client) => {
     // then emits it it to all other sockets in the room.
     client.on('chat message', (id, username, msg, hash, timestamp) => {
         if(checkHash(hash, username)) {
-            io.to(id).emit('chat message', username, msg, timestamp);
+            io.to(id).emit('chat message', id, username, msg, timestamp);
             Chat.create({
                 username: username,
                 chatroom: id,

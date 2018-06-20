@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const env = require('./config/env/env').env;
 mongoose.Promise = global.Promise;
 const connection = require('./config/mongo.db');
+
 // Create http server, and pass it to socket.io
 const server = require('http').createServer(app);
 module.exports.io = require('socket.io')(server);
