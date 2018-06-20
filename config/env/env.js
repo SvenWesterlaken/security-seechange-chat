@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const env = {
-    port: process.env.PORT || 8081,
+    port: process.env.PORT || 1337,
     dbHost: process.env.DB_HOST || 'ds161520.mlab.com',
     dbPort: process.env.DB_PORT || '61520',
     dbUser: process.env.DB_USER || 'thijsvanmarle',
