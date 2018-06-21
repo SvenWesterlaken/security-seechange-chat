@@ -3,7 +3,7 @@ const routes = require('./routes/routes');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-const env = require('./config/env/env').env;
+const env = require('./config/env/env');
 mongoose.Promise = global.Promise;
 const connection = require('./config/mongo.db');
 
@@ -71,4 +71,3 @@ server.listen(env.port, function (err) {
 module.exports = {
     server
 };
-

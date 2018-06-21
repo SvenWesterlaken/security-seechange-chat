@@ -2,7 +2,7 @@ const io = require('../index').io;
 const request = require('request');
 const crypto = require('crypto');
 const fs =require('fs');
-const env = require('../config/env/env').env;
+const env = require('../config/env/env');
 
 const Chat = require('../models/chatMessage');
 
@@ -28,11 +28,10 @@ module.exports = (client) => {
                 return;
             }
 
-            console.log(body);
-
             // Retreive public key from body
             const o = JSON.parse(body);
             pubkey = o.publicKey.toString();
+            console.log(pubkey)
 
             // Check Hash
             if(checkHash(hash, username)) {
@@ -81,11 +80,21 @@ module.exports = (client) => {
     });
 
     function checkHash(encHash, string) {
+      console.log(encHash)
+
         // Decrypt hash
-        let hash = crypto.publicDecrypt(pubkey, new Buffer(encHash, "base64"));
+        console.log("before hashcheck")
+        //console.log(pubkey)
+        //let hash = crypto.publicDecrypt(pubkey, encHash);
         // create hash from string
+
+        //console.log(hash.toString())
+
+        console.log('decrypted hash')
         const newHash = crypto.createHash('sha256').update(string).digest('hex');
+
+        console.log(newHash)
         // return check
-        return newHash === hash.toString();
+        return newHash === encHash;
     }
 };
